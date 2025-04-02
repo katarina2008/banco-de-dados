@@ -1,0 +1,85 @@
+- Geração de Modelo físico
+-- Sql ANSI 2003 - brModelo.
+
+
+
+CREATE TABLE proprietário (
+cod_propri int PRIMARY KEY,
+qtd_imoveis int,
+nome varchar(255),
+rg varchar(20),
+emaill varchar(255),
+telefone varchar(15),
+cpf varchar(20),
+cod_corretor int
+)
+
+CREATE TABLE imóvel (
+qtd_banheiros int,
+qtd_andares int,
+qtd_quartos int,
+prreço varchar(255),
+cod_imovel int PRIMARY KEY,
+qttd_imoveis /*erro: ??*/,
+cod_propri int,
+FOREIGN KEY(cod_propri) REFERENCES proprietário (cod_propri)
+)
+
+CREATE TABLE inquilino (
+cod_inquilino int PRIMARY KEY,
+nome varchar(255),
+cpf varchar(20),
+data_venci date,
+aluguel decimal (10,2),
+data_nasc date,
+email varchar (255),
+telefone varchar(15),
+rg varchar(20),
+cod_corretor int
+)
+
+CREATE TABLE corretor (
+nome varchar(255),
+cpf varchar(20),
+rg varchar(20),
+data_nasc date,
+telefone varchar(15),
+email varchar(255),
+cod_corretor int PRIMARY KEY
+)
+
+CREATE TABLE endereco (
+cep char(8),
+completento varchar(100),
+numero char(5),
+rua varchar(100),
+estado varchar(255),
+cidade varchar(100),
+ bairro varchar(100),
+cod_endereco int PRIMARY KEY
+)
+
+CREATE TABLE aluga (
+cod_aluguel int PRIMARY KEY,
+cod_imovel int,
+cod_inquilino int,
+FOREIGN KEY(cod_imovel) REFERENCES imóvel (cod_imovel),
+FOREIGN KEY(cod_inquilino) REFERENCES inquilino (cod_inquilino)
+)
+
+CREATE TABLE possui (
+cod_imovel int,
+cod_endereco int,
+FOREIGN KEY(cod_imovel) REFERENCES imóvel (cod_imovel),
+FOREIGN KEY(cod_endereco) REFERENCES endereco (cod_endereco)
+)
+
+-- Erro: Nome de tabela duplicado (este erro compromete a integridade referencial)!
+CREATE TABLE possui (
+cod_corretor int,
+cod_endereco int,
+FOREIGN KEY(cod_corretor) REFERENCES corretor (cod_corretor)/*falha: chave estrangeira*/
+)
+
+ALTER TABLE proprietário ADD FOREIGN KEY(cod_corretor) REFERENCES corretor (cod_corretor)
+ALTER TABLE inquilino ADD FOREIGN KEY(cod_corretor) REFERENCES corretor (cod_corretor)
