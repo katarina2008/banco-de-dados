@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 07-Maio-2025 às 17:36
+-- Tempo de geração: 21-Maio-2025 às 17:44
 -- Versão do servidor: 10.4.22-MariaDB
 -- versão do PHP: 8.1.2
 
@@ -58,8 +58,27 @@ CREATE TABLE `produtos` (
   `preco` decimal(10,2) DEFAULT NULL,
   `quant` int(11) DEFAULT NULL,
   `marca` varchar(255) DEFAULT NULL,
-  `id_categoria` int(11) DEFAULT NULL
+  `id_categoria` int(11) DEFAULT NULL,
+  `unidade_medida` varchar(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produto`, `nome`, `preco`, `quant`, `marca`, `id_categoria`, `unidade_medida`) VALUES
+(3, 'papel higiênico', '16.90', 70, 'NEVE', 2, 'un'),
+(4, 'Sabonete', '2.50', 55, 'Dove', 2, 'un'),
+(5, 'sabão em pó', '30.50', 50, 'OMO', 3, 'un'),
+(6, 'detergente', '3.55', 10, 'Ype', 3, 'un'),
+(7, 'Leite', '3.75', 90, 'Italac', 4, 'un'),
+(8, 'Requeijão', '7.00', 65, 'Catupiry', 4, 'un'),
+(9, 'Mortadela', '6.50', 50, 'Marba', 5, 'kg'),
+(10, 'Mussarela', '7.50', 45, 'Presidente', 5, 'kg'),
+(11, 'Laranja', '11.50', 60, 'Pera', 7, 'un'),
+(12, 'Manga', '8.50', 30, 'Rosa', 7, 'un'),
+(13, 'Sardinha', '3.50', 70, 'Marba', 1, 'un'),
+(14, 'Atum', '3.50', 80, 'coqueiro', 1, 'un');
 
 --
 -- Índices para tabelas despejadas
@@ -92,7 +111,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Restrições para despejos de tabelas
