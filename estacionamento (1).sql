@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 09/09/2025 às 14:10
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 11/09/2025 às 04:28
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,7 +65,6 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`id_cliente`, `cpf`, `dtnasc`, `nome`) VALUES
 (1, '123.456.789-00', '1985-04-12 00:00:00', 'João da Silva'),
 (2, '987.654.321-11', '1990-09-25 00:00:00', 'Maria Oliveira'),
-(3, '456.789.123-22', '1978-02-15 00:00:00', 'Carlos Souza'),
 (4, '321.654.987-33', '2000-12-05 00:00:00', 'Ana Costa');
 
 -- --------------------------------------------------------
@@ -90,9 +89,8 @@ CREATE TABLE `estaciona` (
 
 INSERT INTO `estaciona` (`id_estaciona`, `hrsaida`, `hrentrada`, `dtentrada`, `dtsaida`, `id_veiculo`, `id_andar`) VALUES
 (1, '2025-09-02 18:30:00', '2025-09-02 08:00:00', '2025-09-02', '2025-09-02', 1, 1),
-(2, '2025-09-02 19:15:00', '2025-09-02 09:10:00', '2025-07-03', '2025-09-02', 2, 2),
-(3, NULL, '2025-09-02 10:20:00', '2025-03-04', NULL, 3, 3),
-(4, NULL, '2025-09-02 11:00:00', '2025-02-07', NULL, 4, 4);
+(2, '2025-09-02 19:15:00', '2025-09-02 09:10:00', '2025-09-02', '2025-09-02', 2, 2),
+(4, '2025-09-03 17:20:00', '2025-09-02 11:00:00', '2025-09-02', '2025-09-02', 4, 4);
 
 -- --------------------------------------------------------
 
@@ -102,19 +100,18 @@ INSERT INTO `estaciona` (`id_estaciona`, `hrsaida`, `hrentrada`, `dtentrada`, `d
 
 CREATE TABLE `modelo` (
   `id_modelo` int(11) NOT NULL,
-  `modelo` varchar(30) DEFAULT NULL,
-  `ano` int(11) DEFAULT NULL
+  `modelo` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Despejando dados para a tabela `modelo`
 --
 
-INSERT INTO `modelo` (`id_modelo`, `modelo`, `ano`) VALUES
-(1, 'Ford Ka', 2008),
-(2, 'Honda Civic', 1999),
-(3, 'Toyota Corolla', 2001),
-(4, 'Chevrolet Onix', 2003);
+INSERT INTO `modelo` (`id_modelo`, `modelo`) VALUES
+(1, 'Ford Ka'),
+(2, 'Honda Civic'),
+(3, 'Toyota Corolla'),
+(4, 'Chevrolet Onix');
 
 -- --------------------------------------------------------
 
@@ -135,12 +132,11 @@ CREATE TABLE `veiculo` (
 --
 
 INSERT INTO `veiculo` (`id_veiculo`, `placa`, `id_modelo`, `id_cliente`, `cor`) VALUES
-(1, 1234567, 1, 1, 'Prata'),
-(2, 7654321, 2, 2, 'Preto'),
-(3, 9876543, 3, 3, 'Branco'),
-(4, 4567891, 4, 4, 'Vermelho'),
-(5, 5238487, 1, 1, 'Azul'),
-(6, 8498225, 3, 2, 'Cinza');
+(1, 123456, 1, 1, 'Prata'),
+(2, 983417, 2, 2, 'Preto'),
+(4, 923451, 4, 4, 'Vermelho'),
+(5, 346582, 1, 1, 'Azul'),
+(6, 787253, 3, 2, 'Cinza');
 
 --
 -- Índices para tabelas despejadas
